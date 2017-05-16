@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MemoryMonitor</string>
+    <string name="application_name">App Name: %s</string>
+    <string name="process_name">Process Name: %s</string>
+    <string name="process_pid">Pid: %d</string>
+    <string name="total_private_dirty">Total Private Dirty: %,dkB</string>
+    <string name="native_heap">Native Heap: %,dkB</string>
+    <string name="java_heap">Java Heap: %,dkB</string>
 </resources>

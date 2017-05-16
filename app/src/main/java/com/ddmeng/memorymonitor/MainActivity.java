@@ -14,7 +14,6 @@ import android.util.Log;
 import com.jaredrummler.android.processes.AndroidProcesses;
 import com.jaredrummler.android.processes.models.AndroidAppProcess;
 import com.jaredrummler.android.processes.models.Stat;
-import com.jaredrummler.android.processes.models.Statm;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,11 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 pidArray[n++] = stat.getPid();
                 processData.setAppName(appName);
                 processData.setProcessName(process.name);
-
-                Statm statm = process.statm();
-                processData.setTotalSizeOfProcess(statm.getSize());
-                processData.setResidentSetSize(statm.getResidentSetSize());
-
 
                 processDataList.add(processData);
             } catch (PackageManager.NameNotFoundException | IOException e) {

@@ -7,8 +7,6 @@ public class ProcessData {
     private String appName;
     private String processName;
     private int pid;
-    private long totalSizeOfProcess;
-    private long residentSetSize;
 
     private Map<String, String> memoryStatus;
     private int totalPrivateClean;
@@ -42,21 +40,6 @@ public class ProcessData {
         this.pid = pid;
     }
 
-    public long getTotalSizeOfProcess() {
-        return totalSizeOfProcess;
-    }
-
-    public void setTotalSizeOfProcess(long totalSizeOfProcess) {
-        this.totalSizeOfProcess = totalSizeOfProcess / 1024 / 1024;
-    }
-
-    public long getResidentSetSize() {
-        return residentSetSize;
-    }
-
-    public void setResidentSetSize(long residentSetSize) {
-        this.residentSetSize = residentSetSize / 1024 / 1024;
-    }
 
     public Map<String, String> getMemoryStatus() {
         return memoryStatus;
@@ -114,14 +97,20 @@ public class ProcessData {
         this.totalSwappablePss = totalSwappablePss;
     }
 
+    public int getJavaHeap() {
+        return memoryStatus != null ? Integer.valueOf(memoryStatus.get("summary.java-heap")) : 0;
+    }
+
+    public int getNativeHeap() {
+        return memoryStatus != null ? Integer.valueOf(memoryStatus.get("summary.native-heap")) : 0;
+    }
+
     @Override
     public String toString() {
         return "ProcessData{" +
                 "appName='" + appName + '\'' +
                 ", processName='" + processName + '\'' +
                 ", pid=" + pid +
-                ", totalSizeOfProcess=" + totalSizeOfProcess +
-                ", residentSetSize=" + residentSetSize +
                 ", memoryStatus=" + memoryStatus +
                 ", totalPrivateClean=" + totalPrivateClean +
                 ", totalPrivateDirty=" + totalPrivateDirty +
