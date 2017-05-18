@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.jaredrummler.android.processes.AndroidProcesses;
 import com.jaredrummler.android.processes.models.AndroidAppProcess;
@@ -18,6 +19,7 @@ import com.jaredrummler.android.processes.models.Stat;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,7 +30,11 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.processes_list)
     RecyclerView processesRecyclerView;
+    @BindView(R.id.main_container)
+    View mainContainer;
+
     private ProcessListAdapter processListAdapter;
+    private DeviceMemoryInfoViewHolder deviceMemoryInfoViewHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +48,29 @@ public class MainActivity extends AppCompatActivity {
         processesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         processListAdapter = new ProcessListAdapter();
         processesRecyclerView.setAdapter(processListAdapter);
+        deviceMemoryInfoViewHolder = new DeviceMemoryInfoViewHolder(mainContainer);
     }
 
     private void refreshData() {
+        getSystemMemoryInfo();
+        getProcessesMemoryInfo();
+    }
+
+    private void getSystemMemoryInfo() {
+        ActivityManager activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+        activityManager.getMemoryInfo(memoryInfo);
+        Log.d(TAG, String.format(Locale.US, "ActivityManager.memoryInfo %d availMem, %b lowMemory, %d threshold",
+                memoryInfo.availMem, memoryInfo.lowMemory, memoryInfo.threshold));
+
+        int memoryClass = activityManager.getMemoryClass();
+        int largeMemoryClass = activityManager.getLargeMemoryClass();
+        Log.d(TAG, String.format(Locale.US, "getMemoryClass() = %d , getLargeMemoryClass() = %d ", memoryClass, largeMemoryClass));
+
+        deviceMemoryInfoViewHolder.populate(memoryInfo, memoryClass, largeMemoryClass);
+    }
+
+    private void getProcessesMemoryInfo() {
         List<AndroidAppProcess> processes = AndroidProcesses.getRunningAppProcesses();
         Log.d(TAG, "processes: " + processes.size());
         List<ProcessData> processDataList = new ArrayList<>();

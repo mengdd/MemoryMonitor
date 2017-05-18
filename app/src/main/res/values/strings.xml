@@ -3,7 +3,13 @@
     <string name="application_name">App Name: %s</string>
     <string name="process_name">Process Name: %s</string>
     <string name="process_pid">Pid: %d</string>
-    <string name="total_private_dirty">Total Private Dirty: %,dkB</string>
-    <string name="native_heap">Native Heap: %,dkB</string>
-    <string name="java_heap">Java Heap: %,dkB</string>
+    <string name="total_private_dirty">Total Private Dirty: %,d kB</string>
+    <string name="native_heap">Native Heap: %,d kB</string>
+    <string name="java_heap">Java Heap: %,d kB</string>
+    <string name="available_memory_on_system">Available Memory on System: %,d kB</string>
+    <string name="low_memory_flag">Is in Low Memory: %b</string>
+    <string name="memory_threshold">The threshold: %,d kB</string>
+    <string name="total_memory">Total Memory: %,d kB</string>
+    <string name="memory_class">Memory Class: %,d MB</string>
+    <string name="large_memory_class">Large Memory Class: %,d MB</string>
 </resources>

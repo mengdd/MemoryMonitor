@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:id="@+id/device_memory_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Device Memory Information"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/memory_info_avail_mem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/memory_info_low_memory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/memory_info_threshold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/memory_info_total_mem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/memory_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/large_memory_class"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</merge>
