@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:showIn="@layout/activity_main">
+
+
+    <TextView
+        android:id="@+id/runtime_memory_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Runtime Memory Information"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/runtime_total_memory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/runtime_free_memory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/runtime_allocated_memory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/runtime_max_memory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</merge>

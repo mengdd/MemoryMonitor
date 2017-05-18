@@ -13,10 +13,20 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:text="Refresh" />
 
+    <Button
+        android:id="@+id/allocate_memory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Allocate Memory" />
+
+
     <include layout="@layout/device_memory_info_holder" />
+
+    <include layout="@layout/runtime_memory_info_holder" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/processes_list"

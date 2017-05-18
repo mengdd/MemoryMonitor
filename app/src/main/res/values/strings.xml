@@ -12,4 +12,8 @@
     <string name="total_memory">Total Memory: %,d kB</string>
     <string name="memory_class">Memory Class: %,d MB</string>
     <string name="large_memory_class">Large Memory Class: %,d MB</string>
+    <string name="runtime_total_memory">Runtime Total Memory: %,d kB</string>
+    <string name="runtime_free_memory">Runtime Free Memory: %,d kB</string>
+    <string name="runtime_allocated_memory">Runtime Allocated Memory: %,d kB</string>
+    <string name="runtime_max_memory">Runtime Max Memory: %,d kB</string>
 </resources>

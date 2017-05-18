@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ProcessListAdapter processListAdapter;
     private DeviceMemoryInfoViewHolder deviceMemoryInfoViewHolder;
+    private RuntimeMemoryInfoViewHolder runtimeMemoryInfoViewHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +50,22 @@ public class MainActivity extends AppCompatActivity {
         processListAdapter = new ProcessListAdapter();
         processesRecyclerView.setAdapter(processListAdapter);
         deviceMemoryInfoViewHolder = new DeviceMemoryInfoViewHolder(mainContainer);
+        runtimeMemoryInfoViewHolder = new RuntimeMemoryInfoViewHolder(mainContainer);
     }
 
     private void refreshData() {
         getSystemMemoryInfo();
+        getRuntimeMemory();
         getProcessesMemoryInfo();
+    }
+
+    private void getRuntimeMemory() {
+        long totalMemory = Runtime.getRuntime().totalMemory();
+        long freeMemory = Runtime.getRuntime().freeMemory();
+        long maxMemory = Runtime.getRuntime().maxMemory();
+        Log.d(TAG, String.format(Locale.US, "Runtime totalMemory = %,d kB, freeMemory = %,d kB, maxMemory = %,d kB",
+                totalMemory / 1024, freeMemory / 1024, maxMemory / 1024));
+        runtimeMemoryInfoViewHolder.populate(Runtime.getRuntime());
     }
 
     private void getSystemMemoryInfo() {
@@ -121,5 +133,14 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.refresh_button)
     void onRefreshClicked() {
         refreshData();
+    }
+
+    private ArrayList<byte[]> bytesContainer = new ArrayList<>();
+
+    @OnClick(R.id.allocate_memory)
+    void onAllocateMemoryClicked() {
+        byte[] b = new byte[100 * 1024 * 1024];
+        bytesContainer.add(b);
+        Log.d(TAG, "create 100 MB");
     }
 }
